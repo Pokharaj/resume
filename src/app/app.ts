@@ -63,9 +63,11 @@ export class App {
   protected readonly skills = signal<Skill[]>([
     { name: 'Java', level: 100, category: 'Backend' },
     { name: 'Spring Boot', level: 100, category: 'Backend' },
+    { name: 'Spring Batch', level: 100, category: 'Backend' },
     { name: 'Oracle Database', level: 100, category: 'Database' },
     { name: 'AWS Lambda', level: 100, category: 'Cloud' },
     { name: 'AWS Batch', level: 100, category: 'Cloud' },
+    { name: 'Kubernetes', level: 100, category: 'Cloud' },
     { name: 'MongoDB', level: 100, category: 'Database' },
     { name: 'Angular', level: 100, category: 'Frontend' },
     { name: 'SQL', level: 100, category: 'Database' },
