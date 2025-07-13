@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:static": "ng build && npm run move-files",
+    "move-files": "cp -r docs/browser/* docs/ && rm -rf docs/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:pokharaj-resume-app": "node dist/pokharaj-resume-app/server/server.mjs"
