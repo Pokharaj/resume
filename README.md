@@ -35,7 +35,7 @@ A modern, responsive web resume built with Angular 18 and Material Design, showc
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Pokharaj/Pokharaj-resume-app
    cd pokharaj-resume-app
    ```
 
@@ -177,14 +177,6 @@ npm run build
 - **Firebase**: Use Firebase Hosting
 - **GitHub Pages**: Deploy from GitHub Actions
 - **AWS S3**: Static website hosting
-
-## 📞 Contact Information
-
-- **Email**: pokhraj.patel0705@gmail.com
-- **Phone**: +91 8050101967
-- **Location**: Bangalore, India
-- **LinkedIn**: [Pokharaj on LinkedIn](https://linkedin.com/in/pokharaj)
-- **GitHub**: [Pokharaj on GitHub](https://github.com/Pokharaj)
 
 ## 🤝 Contributing
 
