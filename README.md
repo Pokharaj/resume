@@ -35,7 +35,7 @@ A modern, responsive web resume built with Angular 18 and Material Design, showc
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Pokharaj/Pokharaj-resume-app
+   git clone https://github.com/Pokharaj/resume
    cd pokharaj-resume-app
    ```
 
@@ -92,17 +92,23 @@ A modern, responsive web resume built with Angular 18 and Material Design, showc
 ## 🏗️ Project Structure
 
 ```
-src/
-├── app/
-│   ├── app.ts                      # Main resume component
-│   ├── app.html                    # Resume template
-│   ├── app.scss                    # Resume styles
-│   ├── app.config.ts              # App configuration
-│   └── app.routes.ts              # Routing configuration
-├── public/
-│   └── profile-photo.jpg          # Professional photo
-├── styles.scss                     # Global styles
-└── main.ts                        # Application entry point
+pokharaj-resume-app/
+├── src/
+│   ├── app/
+│   │   ├── app.ts                  # Main resume component
+│   │   ├── app.html                # Resume template
+│   │   ├── app.scss                # Resume styles
+│   │   ├── app.config.ts          # App configuration
+│   │   └── app.routes.ts          # Routing configuration
+│   ├── public/
+│   │   └── profile-photo.jpg      # Professional photo
+│   ├── styles.scss                 # Global styles
+│   └── main.ts                    # Application entry point
+├── docs/                          # GitHub Pages deployment folder
+├── dist/                          # Production build folder
+├── angular.json                   # Angular configuration
+├── package.json                   # Dependencies and scripts
+└── README.md                      # Project documentation
 ```
 
 ## 🎨 Design Features
@@ -170,12 +176,72 @@ Built with accessibility in mind:
 npm run build
 ```
 
-### Deploy to Various Platforms
+### Deploy to GitHub Pages (Recommended)
+
+This application is configured to deploy to GitHub Pages using the `/docs` folder approach.
+
+#### Step 1: Build the Application
+```bash
+npm run build
+```
+
+#### Step 2: Configure Angular for GitHub Pages
+Update the `angular.json` file to output to the `docs` folder:
+
+```json
+{
+  "projects": {
+    "pokharaj-resume-app": {
+      "architect": {
+        "build": {
+          "options": {
+            "outputPath": "docs"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### Step 3: Build to Docs Folder
+```bash
+ng build --output-path=docs --base-href=/resume/
+```
+
+#### Step 4: Configure GitHub Pages
+1. Go to your GitHub repository
+2. Navigate to **Settings** → **Pages**
+3. Under **Source**, select **Deploy from a branch**
+4. Choose **main** branch and **/docs** folder
+5. Click **Save**
+
+#### Step 5: Push Changes
+```bash
+git add docs/
+git commit -m "Deploy to GitHub Pages"
+git push origin main
+```
+
+#### Step 6: Access Your Resume
+Your resume will be available at: `https://pokharaj.github.io/resume/`
+
+### Current Deployment Status
+- **Live URL**: [https://pokharaj.github.io/resume/](https://pokharaj.github.io/resume/)
+- **Deployment Method**: GitHub Pages with `/docs` folder
+- **Build Status**: Automated deployment on push to main branch
+
+### Deployment Tips
+- **Base Href**: Make sure to use the correct base href (`/resume/`) for your repository name
+- **Caching**: GitHub Pages may take a few minutes to reflect changes
+- **404 Handling**: For SPA routing, consider adding a custom 404.html
+- **HTTPS**: GitHub Pages automatically provides SSL certificates
+
+### Alternative Deployment Options
 
 - **Netlify**: Drag and drop the `dist` folder
 - **Vercel**: Connect your repository
 - **Firebase**: Use Firebase Hosting
-- **GitHub Pages**: Deploy from GitHub Actions
 - **AWS S3**: Static website hosting
 
 ## 🤝 Contributing
