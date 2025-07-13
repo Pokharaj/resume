@@ -1,0 +1,299 @@
+// Global styles for the Resume app
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+// Content container (centered, full-width, starting from top)
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 32px 16px;
+}
+
+.tab-content {
+  padding: 24px 0;
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 16px;
+    color: #212121;
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 24px;
+    color: #424242;
+    border-bottom: 2px solid #3f51b5;
+    padding-bottom: 8px;
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #424242;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #616161;
+    margin-bottom: 24px;
+  }
+  ul {
+    margin-bottom: 24px;
+    padding-left: 24px;
+    li {
+      margin-bottom: 8px;
+      color: #616161;
+      line-height: 1.5;
+    }
+  }
+}
+
+.resume-section {
+  margin-bottom: 48px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.profile-card {
+  margin-bottom: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  .profile-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #3f51b5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  // Increase name and role font sizes by 20%
+  ::ng-deep mat-card-title {
+    font-size: 1.44rem !important; // 20% increase from default 1.2rem
+    font-weight: 500 !important;
+    color: #212121 !important;
+  }
+  ::ng-deep mat-card-subtitle {
+    font-size: 1.08rem !important; // 20% increase from default 0.9rem
+    color: #666 !important;
+  }
+  .profile-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #616161;
+    margin-bottom: 24px;
+  }
+  .contact-chips {
+    margin-bottom: 24px;
+    mat-chip {
+      margin: 4px;
+      mat-icon {
+        vertical-align: middle;
+        margin-right: 4px;
+      }
+    }
+  }
+  mat-card-actions {
+    padding: 16px 16px 16px 16px;
+    margin: 0;
+    button {
+      margin-right: 12px;
+      mat-icon {
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+.skills-container {
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    .skill-card {
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      .skill-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        .skill-name {
+          font-weight: 500;
+          color: #424242;
+        }
+        .skill-level {
+          font-size: 0.9rem;
+          color: #666;
+          font-weight: 500;
+        }
+      }
+      .skill-progress {
+        height: 6px;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+.experience-timeline {
+  .experience-card {
+    margin-bottom: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    }
+    .experience-list {
+      margin: 16px 0;
+      padding-left: 20px;
+      li {
+        margin-bottom: 8px;
+        color: #616161;
+        line-height: 1.5;
+      }
+    }
+    .technologies {
+      margin-top: 16px;
+      mat-chip {
+        margin: 2px;
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+.education-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+  .education-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    p {
+      margin: 16px 0 0 0;
+      color: #616161;
+      line-height: 1.5;
+    }
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+  .project-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    }
+    p {
+      margin: 16px 0;
+      color: #616161;
+      line-height: 1.5;
+    }
+    .project-technologies {
+      margin: 16px 0;
+      mat-chip {
+        margin: 2px;
+        font-size: 0.85rem;
+      }
+    }
+    mat-card-actions {
+      padding: 16px 16px 16px 16px;
+      margin: 0;
+      button {
+        margin-right: 8px;
+        mat-icon {
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}
+
+.contact-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      mat-icon {
+        color: #3f51b5;
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+      }
+      div {
+        h4 {
+          margin: 0 0 4px 0;
+          color: #424242;
+          font-weight: 500;
+        }
+        p {
+          margin: 0;
+          color: #616161;
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+  mat-card-actions {
+    padding: 24px 16px 16px 16px;
+    margin: 0;
+    button {
+      mat-icon {
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    padding: 16px 4px 24px 4px;
+  }
+  .tab-content {
+    padding: 16px 0;
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+  .skills-container .skill-category .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .education-container {
+    grid-template-columns: 1fr;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-card .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-card .contact-chips mat-chip {
+    font-size: 0.8rem;
+  }
+  .skills-container .skill-category .skills-grid .skill-card {
+    min-width: auto;
+  }
+}
