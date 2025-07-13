@@ -55,6 +55,7 @@ A modern, responsive web resume built with Angular 18 and Material Design, showc
 
 - `npm start` - Start the development server
 - `npm run build` - Build the application for production
+- `npm run build:static` - Build for GitHub Pages (moves files to docs root)
 - `npm run test` - Run unit tests
 - `npm run lint` - Run linting
 - `npm run serve:ssr` - Start SSR server
@@ -180,33 +181,20 @@ npm run build
 
 This application is configured to deploy to GitHub Pages using the `/docs` folder approach.
 
-#### Step 1: Build the Application
+#### Step 1: Build the Application for GitHub Pages
 ```bash
-npm run build
+npm run build:static
 ```
 
-#### Step 2: Configure Angular for GitHub Pages
-Update the `angular.json` file to output to the `docs` folder:
+This command will:
+- Build the application to the `docs` folder
+- Move all files from `docs/browser/` to `docs/` (required for GitHub Pages)
+- Remove the empty `browser` directory
 
-```json
-{
-  "projects": {
-    "pokharaj-resume-app": {
-      "architect": {
-        "build": {
-          "options": {
-            "outputPath": "docs"
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-#### Step 3: Build to Docs Folder
+#### Step 2: Configure Base Href (if needed)
+If you need to change the base href for a different repository name:
 ```bash
-ng build --output-path=docs --base-href=/resume/
+ng build --base-href=/resume/
 ```
 
 #### Step 4: Configure GitHub Pages
