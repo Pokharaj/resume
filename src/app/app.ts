@@ -155,6 +155,13 @@ export class App {
       technologies: ['Java', 'Spring Boot', 'MongoDB', 'Microservices'],
       github: 'https://github.com/pokharaj',
       link: 'https://demo-water-management.com'
+    },
+    {
+      name: 'CAM Archive Logger',
+      description: 'CAM Archive Logger is a lightweight utility designed to securely store logs from applications that process sensitive data, including Personally Identifiable Information (PII). It helps applications retain logs for up to 30 days in compliance with data protection regulations. Logs can be accessed anytime within this period and are automatically deleted after 30 days. The application supports up to 60,000 transactions per second (TPS), ensuring high performance and reliability.',
+      technologies: ['Java', 'Spring Boot', ' AWS Lambda', 'AWS Batch', 'AWS S3', 'KMS', 'Firehose', 'SQS'],
+      github: 'https://github.com/pokharaj',
+      link: 'https://cam-archive-logger.com'
     }
   ]);
 
