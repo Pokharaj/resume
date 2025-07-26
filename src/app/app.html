@@ -3,11 +3,18 @@
     <!-- About Section -->
     <section id="about" class="resume-section">
       <mat-card class="profile-card">
-        <mat-card-header>
-          <img mat-card-avatar class="profile-avatar" src="profile-photo.jpg" alt="Profile Photo">
-          <mat-card-title>{{ name() }}</mat-card-title>
-          <mat-card-subtitle>{{ role() }}</mat-card-subtitle>
-        </mat-card-header>
+        <div class="profile-header-row">
+          <mat-card-header>
+            <img mat-card-avatar class="profile-avatar" src="profile-photo.jpg" alt="Profile Photo">
+            <mat-card-title style="font-size: 1.6rem;">{{ name() }}</mat-card-title>
+            <mat-card-subtitle style="font-size: 1rem;">{{ role() }}</mat-card-subtitle>
+          </mat-card-header>
+          <div class="theme-toggle-row">
+            <button mat-icon-button (click)="toggleTheme()">
+              <mat-icon>{{ theme() === 'dark' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+            </button>
+          </div>
+        </div>
         <mat-card-content>
           <p class="profile-description">
             Experienced Senior Backend Engineer with 8+ years of expertise in Java development and enterprise software solutions. 

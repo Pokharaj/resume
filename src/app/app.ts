@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, effect, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 interface Skill {
   name: string;
@@ -45,15 +46,16 @@ interface Project {
     MatCardModule,
     MatDividerModule,
     MatChipsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSlideToggleModule
   ],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class App {
-  protected readonly title = signal('Pokharaj - Software Developer');
   protected readonly name = signal('Pokharaj');
-  protected readonly role = signal('Lead - Software Engineering');
+  protected readonly role = signal('Lead Software Engineer');
   protected readonly email = signal('pokhraj.patel0705@gmail.com');
   protected readonly phone = signal('+91 8050101967');
   protected readonly location = signal('Bangalore, India');
@@ -150,18 +152,18 @@ export class App {
 
   protected readonly projects = signal<Project[]>([
     {
-      name: 'Water Loss Management(WLM) System',
-      description: 'The Water Loss Management System is focused on supporting water utilities in monitoring their infrastructure and optimizing their operations through advanced analytics. It targets the growing challenge of non-revenue water loss - treated drinking water that is lost due to leaks, theft, or other causes. It includes real-time leak detection, identification of pipe network assets at risk of failure, operational simulations, meter data analytics, and water quality monitoring. It effectively integrates advanced software and hardware to enable water utilities to reduce energy and water wastage in real-time without compromising water quality and hydraulic standards.',
-      technologies: ['Java', 'Spring Boot', 'MongoDB', 'Microservices'],
-      github: 'https://github.com/pokharaj',
-      link: 'https://demo-water-management.com'
-    },
-    {
       name: 'CAM Archive Logger',
       description: 'CAM Archive Logger is a lightweight utility designed to securely store logs from applications that process sensitive data, including Personally Identifiable Information (PII). It helps applications retain logs for up to 30 days in compliance with data protection regulations. Logs can be accessed anytime within this period and are automatically deleted after 30 days. The application supports up to 60,000 transactions per second (TPS), ensuring high performance and reliability.',
       technologies: ['Java', 'Spring Boot', ' AWS Lambda', 'AWS Batch', 'AWS S3', 'KMS', 'Firehose', 'SQS'],
       github: 'https://github.com/pokharaj',
       link: 'https://cam-archive-logger.com'
+    },
+    {
+      name: 'Water Loss Management(WLM) System',
+      description: 'The Water Loss Management System is focused on supporting water utilities in monitoring their infrastructure and optimizing their operations through advanced analytics. It targets the growing challenge of non-revenue water loss - treated drinking water that is lost due to leaks, theft, or other causes. It includes real-time leak detection, identification of pipe network assets at risk of failure, operational simulations, meter data analytics, and water quality monitoring. It effectively integrates advanced software and hardware to enable water utilities to reduce energy and water wastage in real-time without compromising water quality and hydraulic standards.',
+      technologies: ['Java', 'Spring Boot', 'MongoDB', 'Microservices'],
+      github: 'https://github.com/pokharaj',
+      link: 'https://demo-water-management.com'
     }
   ]);
 
@@ -173,7 +175,37 @@ export class App {
     github: this.github()
   });
 
+  protected readonly theme = signal<'light' | 'dark'>(this.getInitialTheme());
 
+  constructor() {
+    effect(() => {
+      const theme = this.theme();
+      this.applyTheme(theme);
+      localStorage.setItem('theme', theme);
+    });
+  }
+
+  protected toggleTheme(): void {
+    this.theme.set(this.theme() === 'light' ? 'dark' : 'light');
+  }
+
+  private getInitialTheme(): 'light' | 'dark' {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      // Optionally, use prefers-color-scheme
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+    }
+    return 'light';
+  }
+
+  private applyTheme(theme: 'light' | 'dark') {
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.toggle('dark-theme', theme === 'dark');
+    }
+  }
 
   // Access to window object for external links
   protected readonly window = typeof window !== 'undefined' ? window : null;
