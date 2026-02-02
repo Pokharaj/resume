@@ -12,8 +12,8 @@ const indexContent = fs.readFileSync(indexPath, 'utf8');
 const scriptMatch = indexContent.match(/<script type="module" crossorigin src="([^"]*)"><\/script>/);
 const cssMatch = indexContent.match(/<link rel="stylesheet" crossorigin href="([^"]*)">/);
 
-const scriptSrc = scriptMatch ? scriptMatch[1] : '/pokharaj-resume/assets/index.js';
-const cssHref = cssMatch ? cssMatch[1] : '/pokharaj-resume/assets/index.css';
+const scriptSrc = scriptMatch ? scriptMatch[1] : '/resume/assets/index.js';
+const cssHref = cssMatch ? cssMatch[1] : '/resume/assets/index.css';
 
 // Create 404.html with GitHub Pages SPA redirect script
 // Remove the URL restoration script from index.html and replace with redirect script
@@ -35,7 +35,7 @@ const notFoundContent = indexContent
   // with Internet Explorer (it is currently > 512 bytes)
 
   var pathSegmentsToKeep = 1; // Keep the base path segment
-  var basePath = '/pokharaj-resume';
+  var basePath = '/resume';
 
   var l = window.location;
   var currentPath = l.pathname;
